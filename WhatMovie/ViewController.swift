@@ -8,13 +8,34 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+    
+    @IBOutlet weak var moviesCollectionView: UICollectionView!
+    
+    let store = DataStore.sharedInstance
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        store.getMovieImages {
+            DispatchQueue.main.async {
+                self.moviesCollectionView.reloadSections(IndexSet(integer: 0))
+            }
+        }
     }
 
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return store.movies.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = moviesCollectionView.dequeueReusableCell(withReuseIdentifier: "movieCollectionViewCell", for: indexPath) as! MovieCollectionViewCell
+        
+        let movie = store.movies[indexPath.row]
+        cell.displayContent(image: store.images[indexPath.row], title: movie.title)
+        
+        return cell
+    }
 
 }
 
