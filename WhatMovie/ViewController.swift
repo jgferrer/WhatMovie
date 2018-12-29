@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
@@ -20,7 +21,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        store.getMovieImages(page: 1) {
+        store.getMovies(page: 1) {
             DispatchQueue.main.async {
                 self.moviesCollectionView.reloadSections(IndexSet(integer: 0))
             }
@@ -29,7 +30,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
 
     @IBAction func btnNext(_ sender: UIButton) {
         txtPageNumber.text = String(Int(txtPageNumber.text!)! + 1)
-        store.getMovieImages(page: Int(txtPageNumber.text!)!) {
+        store.getMovies(page: Int(txtPageNumber.text!)!) {
             DispatchQueue.main.async {
                 self.moviesCollectionView.reloadSections(IndexSet(integer: 0))
             }
@@ -39,7 +40,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     @IBAction func btnBack(_ sender: UIButton) {
         if (txtPageNumber.text != "1"){
             txtPageNumber.text = String(Int(txtPageNumber.text!)! - 1)
-            store.getMovieImages(page: Int(txtPageNumber.text!)!) {
+            store.getMovies(page: Int(txtPageNumber.text!)!) {
                 DispatchQueue.main.async {
                     self.moviesCollectionView.reloadSections(IndexSet(integer: 0))
                 }
@@ -55,8 +56,10 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         let cell = moviesCollectionView.dequeueReusableCell(withReuseIdentifier: "movieCollectionViewCell", for: indexPath) as! MovieCollectionViewCell
         
         let movie = store.movies[indexPath.row]
-        cell.displayContent(image: store.images[indexPath.row], title: movie.title)
-        
+        let url = URL(string: "https://image.tmdb.org/t/p/w370_and_h556_bestv2" + movie.poster_path)
+        cell.movieTitle.text = movie.title
+        cell.movieImage.kf.setImage(with: url)
+
         return cell
     }
     

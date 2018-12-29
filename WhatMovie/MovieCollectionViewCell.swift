@@ -8,15 +8,11 @@
 
 import Foundation
 import UIKit
+import Kingfisher
 
 class MovieCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet var movieImage: UIImageView!
     @IBOutlet var movieTitle: UILabel!
-    
-    func displayContent(image: UIImage, title: String){
-        movieImage.image = image
-        movieTitle.text = title
-    }
     
 }
