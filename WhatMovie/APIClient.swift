@@ -12,9 +12,11 @@ typealias MovieJSON = [String: Any]
 
 struct APIClient {
     
-    static func getPopularMoviesAPI(completion: @escaping (MovieJSON?) -> Void) {
+    static func getPopularMoviesAPI(page: Int, completion: @escaping (MovieJSON?) -> Void) {
         
-        let url = URL(string: "https://api.themoviedb.org/3/movie/popular?page=10&language=es-ES&api_key=" + Constants.TMDBAPIKey)
+        let url = URL(string: "https://api.themoviedb.org/3/movie/popular?page=\(page)&language=es-ES&api_key=" + Constants.TMDBAPIKey)
+        //let url = URL(string: "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&language=es-ES&api_key=" + Constants.TMDBAPIKey)
+        
         let session = URLSession.shared
         guard let unwrappedURL = url else { print("Error unwrapping URL"); return }
         let dataTask = session.dataTask(with: unwrappedURL) { (data, response, error) in

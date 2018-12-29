@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -19,30 +20,30 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bF2-DI-IBP">
-                                <rect key="frame" x="10" y="30" width="355" height="533.5"/>
+                                <rect key="frame" x="10" y="30" width="355" height="582.5"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="5" id="Sya-OS-eJd">
-                                    <size key="itemSize" width="175" height="240"/>
+                                    <size key="itemSize" width="175" height="255"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="2" maxX="0.0" maxY="2"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="movieCollectionViewCell" id="PIk-Yr-1YO" customClass="MovieCollectionViewCell" customModule="WhatMovie" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="2" width="175" height="240"/>
+                                        <rect key="frame" x="0.0" y="2" width="175" height="255"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="175" height="240"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="175" height="255"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4AB-0c-Dig">
-                                                    <rect key="frame" x="12.5" y="5" width="150" height="200.5"/>
+                                                    <rect key="frame" x="12.5" y="5" width="150" height="215.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="150" id="hnj-Hq-kov"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KZv-sb-9WG">
-                                                    <rect key="frame" x="0.0" y="220.5" width="175" height="14.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KZv-sb-9WG">
+                                                    <rect key="frame" x="0.0" y="235.5" width="175" height="14.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -69,18 +70,51 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="rKb-2L-vZ8"/>
                                 </connections>
                             </collectionView>
+                            <stackView opaque="NO" contentMode="scaleAspectFill" distribution="fillProportionally" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="t8z-HT-0nh">
+                                <rect key="frame" x="10" y="628" width="355" height="34"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Adb-KO-eWh">
+                                        <rect key="frame" x="0.0" y="0.0" width="117" height="34"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                        <state key="normal" title="&lt;&lt;"/>
+                                        <connections>
+                                            <action selector="btnBack:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ohM-9e-JRx"/>
+                                        </connections>
+                                    </button>
+                                    <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="POF-d0-O9o">
+                                        <rect key="frame" x="125" y="2" width="121" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sTi-tf-fWu">
+                                        <rect key="frame" x="254" y="0.5" width="101" height="33"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <state key="normal" title="&gt;&gt;"/>
+                                        <connections>
+                                            <action selector="btnNext:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Xxv-lo-2ZG"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="bF2-DI-IBP" secondAttribute="trailing" constant="10" id="0wy-aq-G1F"/>
-                            <constraint firstItem="bF2-DI-IBP" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.8" id="6DW-25-Wi6"/>
+                            <constraint firstItem="t8z-HT-0nh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="417-A1-WQx"/>
                             <constraint firstItem="bF2-DI-IBP" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="AoC-Th-Wal"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="t8z-HT-0nh" secondAttribute="trailing" constant="10" id="M8M-J0-hAT"/>
                             <constraint firstItem="bF2-DI-IBP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="MNp-5i-Yh8"/>
+                            <constraint firstAttribute="bottom" secondItem="t8z-HT-0nh" secondAttribute="bottom" constant="5" id="SeZ-Sm-N4t"/>
+                            <constraint firstItem="bF2-DI-IBP" firstAttribute="height" secondItem="6Tk-OE-BBY" secondAttribute="height" multiplier="0.9" id="mdM-Y8-zRY"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="btnBackPage" destination="Adb-KO-eWh" id="xuG-BS-aEF"/>
+                        <outlet property="btnNextPage" destination="sTi-tf-fWu" id="SEf-dI-B8m"/>
                         <outlet property="moviesCollectionView" destination="bF2-DI-IBP" id="9K1-Xy-o1w"/>
+                        <outlet property="txtPageNumber" destination="POF-d0-O9o" id="rml-hQ-Orz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

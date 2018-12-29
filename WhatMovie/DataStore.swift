@@ -17,11 +17,11 @@ final class DataStore {
     var movies: [Movie] = []
     var images: [UIImage] = []
     
-    func getMovies(completion: @escaping () -> Void) {
-        
-        APIClient.getPopularMoviesAPI { (json) in
+    func getMovies(page: Int, completion: @escaping () -> Void) {
+        APIClient.getPopularMoviesAPI(page: page) { (json) in
             //let feed = json?["feed"] as? MovieJSON
             if let results = json?["results"] as? [MovieJSON] {
+                self.movies = []
                 for dict in results {
                     let newMovie = Movie(dictionary: dict)
                     self.movies.append(newMovie)
@@ -31,8 +31,9 @@ final class DataStore {
         }
     }
     
-    func getMovieImages(completion: @escaping () -> Void) {
-        getMovies {
+    func getMovieImages(page: Int, completion: @escaping () -> Void) {
+        getMovies(page: page) {
+            self.images = []
             for movie in self.movies {
                 let url = URL(string: "https://image.tmdb.org/t/p/w370_and_h556_bestv2" + movie.poster_path)
                 let data = try? Data(contentsOf: url!)

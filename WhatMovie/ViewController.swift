@@ -11,19 +11,42 @@ import UIKit
 class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
     @IBOutlet weak var moviesCollectionView: UICollectionView!
+    @IBOutlet weak var btnBackPage: UIButton!
+    @IBOutlet weak var btnNextPage: UIButton!
+    @IBOutlet weak var txtPageNumber: UITextField!
     
     let store = DataStore.sharedInstance
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        store.getMovieImages {
+        store.getMovieImages(page: 1) {
             DispatchQueue.main.async {
                 self.moviesCollectionView.reloadSections(IndexSet(integer: 0))
             }
         }
     }
 
+    @IBAction func btnNext(_ sender: UIButton) {
+        txtPageNumber.text = String(Int(txtPageNumber.text!)! + 1)
+        store.getMovieImages(page: Int(txtPageNumber.text!)!) {
+            DispatchQueue.main.async {
+                self.moviesCollectionView.reloadSections(IndexSet(integer: 0))
+            }
+        }
+    }
+    
+    @IBAction func btnBack(_ sender: UIButton) {
+        if (txtPageNumber.text != "1"){
+            txtPageNumber.text = String(Int(txtPageNumber.text!)! - 1)
+            store.getMovieImages(page: Int(txtPageNumber.text!)!) {
+                DispatchQueue.main.async {
+                    self.moviesCollectionView.reloadSections(IndexSet(integer: 0))
+                }
+            }
+        }
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return store.movies.count
     }
@@ -36,6 +59,6 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         
         return cell
     }
-
+    
 }
 
