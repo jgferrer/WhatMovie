@@ -29,16 +29,13 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         }
     }
     
-    private func doPaging() {
-        if (self.pageNumber == 1) {
-            self.moviesCollectionView.setContentOffset(CGPoint(x:0,y:0), animated: false)
-        }
+    private func doPaging(goToTop: Bool) {
         store.getMovies(movieOption: movieOption, page: self.pageNumber) {
             DispatchQueue.main.async {
                 UIView.performWithoutAnimation {
                     self.moviesCollectionView.reloadSections(IndexSet(integer: 0))
                 }
-                if (self.pageNumber == 1) {
+                if (goToTop) {
                     self.moviesCollectionView.setContentOffset(CGPoint(x:0,y:0), animated: true)
                 }
                 self.isWating = false
@@ -53,7 +50,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         pageNumber = 1
         movieOption = "popular"
         isWating = true
-        doPaging()
+        doPaging(goToTop: true)
     }
     
     @IBAction func showTopRatedMovies(_ sender: Any) {
@@ -61,7 +58,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         pageNumber = 1
         movieOption = "top_rated"
         isWating = true
-        doPaging()
+        doPaging(goToTop: true)
     }
     
     @IBAction func showUpcomingMovies(_ sender: Any) {
@@ -69,7 +66,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         pageNumber = 1
         movieOption = "upcoming"
         isWating = true
-        doPaging()
+        doPaging(goToTop: true)
     }
     
     
@@ -94,7 +91,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         if indexPath.row == store.movies.count - 6 && !isWating {
             isWating = true
             self.pageNumber += 1
-            self.doPaging()
+            self.doPaging(goToTop: false)
         }
     }
 }
