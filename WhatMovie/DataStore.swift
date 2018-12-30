@@ -16,10 +16,10 @@ final class DataStore {
     
     var movies: [Movie] = []
     
-    func getMovies(page: Int, completion: @escaping () -> Void) {
-        APIClient.getPopularMoviesAPI(page: page) { (json) in
+    func getMovies(movieOption: String, page: Int, completion: @escaping () -> Void) {
+        APIClient.getMoviesAPI(movieOption: movieOption, page: page) { (json) in
             if let results = json?["results"] as? [MovieJSON] {
-                self.movies = []
+                if page == 1 { self.movies = [] }
                 for dict in results {
                     let newMovie = Movie(dictionary: dict)
                     self.movies.append(newMovie)
