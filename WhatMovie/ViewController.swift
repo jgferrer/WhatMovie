@@ -80,15 +80,19 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "movieCollectionViewCell", for: indexPath) as! MovieCollectionViewCell
         
         let movie = store.movies[indexPath.row]
-        let url = URL(string: "https://image.tmdb.org/t/p/w370_and_h556_bestv2" + movie.poster_path)
+        let url = (!(movie.poster_path ?? "").isEmpty ?
+            URL(string: "https://image.tmdb.org/t/p/w185" + movie.poster_path!) :
+            URL(string: ""))
+        
         cell.movieTitle.text = movie.title
-        cell.movieImage.kf.setImage(with: url)
-
+        let defaultImage = UIImage(named: "no-image")
+        cell.movieImage.kf.setImage(with: url, placeholder: defaultImage)
+        
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if indexPath.row == store.movies.count - 6 && !isWating {
+        if indexPath.row == store.movies.count - 4 && !isWating {
             isWating = true
             self.pageNumber += 1
             self.doPaging(goToTop: false)

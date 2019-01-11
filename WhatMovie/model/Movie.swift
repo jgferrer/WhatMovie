@@ -15,7 +15,7 @@ struct Movie {
     let vote_average: NSNumber
     let title: String
     let popularity: NSNumber
-    let poster_path: String
+    let poster_path: String?
     let original_language: String
     let original_title: String
     let genre_ids: [Int]
@@ -31,7 +31,7 @@ struct Movie {
         self.vote_average = dictionary["vote_average"] as! NSNumber
         self.title = dictionary["title"] as! String
         self.popularity = dictionary["popularity"] as! NSNumber
-        self.poster_path = dictionary["poster_path"] as! String
+        self.poster_path = dictionary["poster_path"] as? String
         self.original_language = dictionary["original_language"] as! String
         self.original_title = dictionary["original_title"] as! String
         self.genre_ids = dictionary["genre_ids"] as! [Int]
