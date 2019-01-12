@@ -14,13 +14,23 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     @IBOutlet weak var moviesCollectionView: UICollectionView!
     @IBOutlet weak var navigationBar: UINavigationBar!
     
+    @IBOutlet weak var popularButton: UIBarButtonItem!
+    @IBOutlet weak var topratedButton: UIBarButtonItem!
+    @IBOutlet weak var upcomingButton: UIBarButtonItem!
+    
+    
     let store = DataStore.sharedInstance
     var pageNumber: Int = 1
     var movieOption: String = "popular"
     var isWating: Bool = false
     
+    let selectedItemColor = UIColor(red: 0, green: 0.1216, blue: 0.9294, alpha: 1.0)
+    let unselectedItemColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1.0)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tintButtons()
         
         store.getMovies(movieOption: movieOption, page: 1) {
             DispatchQueue.main.async {
@@ -30,6 +40,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     }
     
     private func doPaging(goToTop: Bool) {
+        tintButtons()
         store.getMovies(movieOption: movieOption, page: self.pageNumber) {
             DispatchQueue.main.async {
                 UIView.performWithoutAnimation {
@@ -41,6 +52,12 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
                 self.isWating = false
             }
         }
+    }
+    
+    private func tintButtons() {
+        popularButton.tintColor = (movieOption == "popular") ? selectedItemColor : unselectedItemColor
+        topratedButton.tintColor = (movieOption == "top_rated") ? selectedItemColor : unselectedItemColor
+        upcomingButton.tintColor = (movieOption == "upcoming") ? selectedItemColor : unselectedItemColor
     }
     
     // MARK: - ToolBar Actions

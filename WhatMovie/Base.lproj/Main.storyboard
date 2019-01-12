@@ -78,19 +78,22 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OzQ-3W-L72">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <items>
-                                    <barButtonItem title="Popular" id="URg-ot-zsL">
+                                    <barButtonItem title="Popular" image="popular" width="90" id="URg-ot-zsL">
+                                        <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <connections>
                                             <action selector="showPopularMovies:" destination="BYZ-38-t0r" id="tz1-L3-W8l"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="GXc-Nc-maA"/>
-                                    <barButtonItem title="Top rated" id="90D-uF-4oD">
+                                    <barButtonItem title="Top rated" image="toprated" width="90" id="90D-uF-4oD">
+                                        <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <connections>
                                             <action selector="showTopRatedMovies:" destination="BYZ-38-t0r" id="Cyq-4L-rNE"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="r8f-jX-kxr"/>
-                                    <barButtonItem title="Upcoming" id="215-Ve-tLV">
+                                    <barButtonItem title="Upcoming" image="upcoming" width="90" id="215-Ve-tLV">
+                                        <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <connections>
                                             <action selector="showUpcomingMovies:" destination="BYZ-38-t0r" id="tfD-Qa-Emq"/>
                                         </connections>
@@ -119,6 +122,9 @@
                     <connections>
                         <outlet property="moviesCollectionView" destination="bF2-DI-IBP" id="9K1-Xy-o1w"/>
                         <outlet property="navigationBar" destination="dCZ-hs-tV1" id="POM-u3-Vg1"/>
+                        <outlet property="popularButton" destination="URg-ot-zsL" id="Jns-16-cJK"/>
+                        <outlet property="topratedButton" destination="90D-uF-4oD" id="901-mv-yQv"/>
+                        <outlet property="upcomingButton" destination="215-Ve-tLV" id="LKj-ce-Bs7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -126,4 +132,9 @@
             <point key="canvasLocation" x="2015.2" y="145.27736131934034"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="popular" width="22.5" height="22.5"/>
+        <image name="toprated" width="22.5" height="22.5"/>
+        <image name="upcoming" width="22.5" height="22.5"/>
+    </resources>
 </document>
