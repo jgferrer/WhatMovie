@@ -67,6 +67,7 @@
                                         <connections>
                                             <outlet property="movieImage" destination="4AB-0c-Dig" id="Efn-EZ-Tda"/>
                                             <outlet property="movieTitle" destination="KZv-sb-9WG" id="wEk-6D-Uzl"/>
+                                            <segue destination="b7s-km-X8g" kind="showDetail" identifier="showMovieDetail" id="gjc-5R-pYq"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -130,6 +131,81 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2015.2" y="145.27736131934034"/>
+        </scene>
+        <!--Movie Detail Controller-->
+        <scene sceneID="R2R-P8-UHG">
+            <objects>
+                <viewController id="b7s-km-X8g" customClass="MovieDetailController" customModule="WhatMovie" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DSM-OJ-BGB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SRT-Bo-Lwk">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <items>
+                                    <navigationItem title="Info" id="qYp-no-eGN">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="pJy-nU-VTd">
+                                            <connections>
+                                                <action selector="closeDetail:" destination="b7s-km-X8g" id="Nb0-QS-iFX"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DuC-k5-OpK">
+                                <rect key="frame" x="16" y="121.5" width="150" height="215.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="215.5" id="U3b-Vg-kCm"/>
+                                    <constraint firstAttribute="width" constant="150" id="eMw-13-rMd"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qqs-VB-f2n">
+                                <rect key="frame" x="16" y="81" width="343" height="20.5"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Overview" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cSq-sH-Iaa">
+                                <rect key="frame" x="16" y="345" width="343" height="18"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OIi-Oj-9tN">
+                                <rect key="frame" x="16" y="371" width="343" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="OIi-Oj-9tN" firstAttribute="top" secondItem="cSq-sH-Iaa" secondAttribute="bottom" constant="8" id="BGp-21-8UG"/>
+                            <constraint firstItem="OIi-Oj-9tN" firstAttribute="leading" secondItem="0e1-7V-yOC" secondAttribute="leading" constant="16" id="CC0-tv-YJD"/>
+                            <constraint firstItem="0e1-7V-yOC" firstAttribute="trailing" secondItem="OIi-Oj-9tN" secondAttribute="trailing" constant="16" id="GQg-IB-mC0"/>
+                            <constraint firstItem="cSq-sH-Iaa" firstAttribute="leading" secondItem="0e1-7V-yOC" secondAttribute="leading" constant="16" id="P8f-OG-S27"/>
+                            <constraint firstItem="DuC-k5-OpK" firstAttribute="top" secondItem="Qqs-VB-f2n" secondAttribute="bottom" constant="20" id="PuO-0F-Z9w"/>
+                            <constraint firstItem="DuC-k5-OpK" firstAttribute="leading" secondItem="0e1-7V-yOC" secondAttribute="leading" constant="16" id="ace-sF-lc7"/>
+                            <constraint firstItem="Qqs-VB-f2n" firstAttribute="leading" secondItem="0e1-7V-yOC" secondAttribute="leading" constant="16" id="f02-gV-onu"/>
+                            <constraint firstItem="SRT-Bo-Lwk" firstAttribute="leading" secondItem="0e1-7V-yOC" secondAttribute="leading" id="fgq-gc-uof"/>
+                            <constraint firstItem="SRT-Bo-Lwk" firstAttribute="top" secondItem="0e1-7V-yOC" secondAttribute="top" id="mfU-9P-56C"/>
+                            <constraint firstItem="cSq-sH-Iaa" firstAttribute="top" secondItem="DuC-k5-OpK" secondAttribute="bottom" constant="8" id="nZw-11-zKX"/>
+                            <constraint firstItem="SRT-Bo-Lwk" firstAttribute="trailing" secondItem="0e1-7V-yOC" secondAttribute="trailing" id="qKh-30-NZ1"/>
+                            <constraint firstItem="0e1-7V-yOC" firstAttribute="trailing" secondItem="Qqs-VB-f2n" secondAttribute="trailing" constant="16" id="rKO-l6-qhD"/>
+                            <constraint firstItem="0e1-7V-yOC" firstAttribute="trailing" secondItem="cSq-sH-Iaa" secondAttribute="trailing" constant="16" id="uxw-o1-mHl"/>
+                            <constraint firstItem="Qqs-VB-f2n" firstAttribute="top" secondItem="SRT-Bo-Lwk" secondAttribute="bottom" constant="17" id="xmg-Ej-ZuA"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="0e1-7V-yOC"/>
+                    </view>
+                    <connections>
+                        <outlet property="lblMovieOverview" destination="OIi-Oj-9tN" id="r58-sr-iaw"/>
+                        <outlet property="lblMovieTitle" destination="Qqs-VB-f2n" id="ZCC-Pj-I25"/>
+                        <outlet property="movieImage" destination="DuC-k5-OpK" id="dp8-wL-QTX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XRY-vr-iYg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2900" y="144.3778110944528"/>
         </scene>
     </scenes>
     <resources>

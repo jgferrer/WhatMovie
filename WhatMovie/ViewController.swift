@@ -60,6 +60,25 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         upcomingButton.tintColor = (movieOption == "upcoming") ? selectedItemColor : unselectedItemColor
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showMovieDetail", let sender = sender
+        {
+            if object_getClassName(sender) == object_getClassName(MovieCollectionViewCell()) {
+                let cell = sender as! MovieCollectionViewCell
+                let indexPath = moviesCollectionView.indexPath(for: cell)
+                
+                if let indexPath = indexPath {
+                    let movie = store.movies[indexPath.row]
+                    
+                    // get the destinationController and pass the selected post object to it
+                    let destinationController = segue.destination as! MovieDetailController
+                    destinationController.selectedMovie = movie
+                }
+            }
+        }
+    }
+    
+    
     // MARK: - ToolBar Actions
     
     @IBAction func showPopularMovies(_ sender: Any) {
@@ -115,5 +134,6 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             self.doPaging(goToTop: false)
         }
     }
+    
 }
 
