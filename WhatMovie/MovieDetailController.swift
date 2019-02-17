@@ -14,7 +14,7 @@ class MovieDetailController: UIViewController {
     
     @IBOutlet weak var movieImage: UIImageView!
     @IBOutlet weak var lblMovieTitle: UILabel!
-    @IBOutlet weak var lblMovieOverview: UILabel!
+    @IBOutlet weak var txtMovieOverview: UITextView!
     
     var selectedMovie: Movie?
     
@@ -29,7 +29,7 @@ class MovieDetailController: UIViewController {
         movieImage.kf.setImage(with: url, placeholder: defaultImage)
         
         lblMovieTitle.text = (selectedMovie?.title)! + " (\(selectedMovie?.release_date.subString(from: 0, to: 3) ?? "--"))"
-        lblMovieOverview.text = selectedMovie?.overview
+        txtMovieOverview.text = selectedMovie?.overview
         
     }
     

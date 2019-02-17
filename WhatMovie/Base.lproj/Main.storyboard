@@ -171,36 +171,38 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OIi-Oj-9tN">
-                                <rect key="frame" x="16" y="371" width="343" height="18"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="gNY-dJ-BU2">
+                                <rect key="frame" x="16" y="371" width="343" height="276"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="OIi-Oj-9tN" firstAttribute="top" secondItem="cSq-sH-Iaa" secondAttribute="bottom" constant="8" id="BGp-21-8UG"/>
-                            <constraint firstItem="OIi-Oj-9tN" firstAttribute="leading" secondItem="0e1-7V-yOC" secondAttribute="leading" constant="16" id="CC0-tv-YJD"/>
-                            <constraint firstItem="0e1-7V-yOC" firstAttribute="trailing" secondItem="OIi-Oj-9tN" secondAttribute="trailing" constant="16" id="GQg-IB-mC0"/>
+                            <constraint firstItem="gNY-dJ-BU2" firstAttribute="leading" secondItem="0e1-7V-yOC" secondAttribute="leading" constant="16" id="7be-tZ-gbC"/>
                             <constraint firstItem="cSq-sH-Iaa" firstAttribute="leading" secondItem="0e1-7V-yOC" secondAttribute="leading" constant="16" id="P8f-OG-S27"/>
                             <constraint firstItem="DuC-k5-OpK" firstAttribute="top" secondItem="Qqs-VB-f2n" secondAttribute="bottom" constant="20" id="PuO-0F-Z9w"/>
+                            <constraint firstItem="gNY-dJ-BU2" firstAttribute="top" secondItem="cSq-sH-Iaa" secondAttribute="bottom" constant="8" id="X9N-GR-D36"/>
                             <constraint firstItem="DuC-k5-OpK" firstAttribute="leading" secondItem="0e1-7V-yOC" secondAttribute="leading" constant="16" id="ace-sF-lc7"/>
                             <constraint firstItem="Qqs-VB-f2n" firstAttribute="leading" secondItem="0e1-7V-yOC" secondAttribute="leading" constant="16" id="f02-gV-onu"/>
                             <constraint firstItem="SRT-Bo-Lwk" firstAttribute="leading" secondItem="0e1-7V-yOC" secondAttribute="leading" id="fgq-gc-uof"/>
+                            <constraint firstItem="0e1-7V-yOC" firstAttribute="bottom" secondItem="gNY-dJ-BU2" secondAttribute="bottom" constant="20" id="jkF-DG-uqu"/>
                             <constraint firstItem="SRT-Bo-Lwk" firstAttribute="top" secondItem="0e1-7V-yOC" secondAttribute="top" id="mfU-9P-56C"/>
                             <constraint firstItem="cSq-sH-Iaa" firstAttribute="top" secondItem="DuC-k5-OpK" secondAttribute="bottom" constant="8" id="nZw-11-zKX"/>
                             <constraint firstItem="SRT-Bo-Lwk" firstAttribute="trailing" secondItem="0e1-7V-yOC" secondAttribute="trailing" id="qKh-30-NZ1"/>
                             <constraint firstItem="0e1-7V-yOC" firstAttribute="trailing" secondItem="Qqs-VB-f2n" secondAttribute="trailing" constant="16" id="rKO-l6-qhD"/>
+                            <constraint firstItem="0e1-7V-yOC" firstAttribute="trailing" secondItem="gNY-dJ-BU2" secondAttribute="trailing" constant="16" id="tLv-zH-h2E"/>
                             <constraint firstItem="0e1-7V-yOC" firstAttribute="trailing" secondItem="cSq-sH-Iaa" secondAttribute="trailing" constant="16" id="uxw-o1-mHl"/>
                             <constraint firstItem="Qqs-VB-f2n" firstAttribute="top" secondItem="SRT-Bo-Lwk" secondAttribute="bottom" constant="17" id="xmg-Ej-ZuA"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="0e1-7V-yOC"/>
                     </view>
                     <connections>
-                        <outlet property="lblMovieOverview" destination="OIi-Oj-9tN" id="r58-sr-iaw"/>
                         <outlet property="lblMovieTitle" destination="Qqs-VB-f2n" id="ZCC-Pj-I25"/>
                         <outlet property="movieImage" destination="DuC-k5-OpK" id="dp8-wL-QTX"/>
+                        <outlet property="txtMovieOverview" destination="gNY-dJ-BU2" id="0Gd-3J-36b"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XRY-vr-iYg" userLabel="First Responder" sceneMemberID="firstResponder"/>
